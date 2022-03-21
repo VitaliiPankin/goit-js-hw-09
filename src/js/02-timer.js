@@ -49,7 +49,7 @@ function convertMs(ms) {
 
         minDate: "today",
         dateFormat: "d.m.Y",
-        maxDate: "30.03.2022"
+        maxDate: "30.03.2030"
       });
 
       
@@ -58,6 +58,8 @@ function convertMs(ms) {
             
       startBtn.addEventListener("click",()=>{
           interval = setInterval(updateDate, 1000)
+          startBtn.setAttribute('disabled', true)
+          inputData.setAttribute('disabled', true)
          function updateDate(){
           
           const closeInterval = (chosenDate - Date.now());
@@ -67,7 +69,7 @@ function convertMs(ms) {
             refs.hours.textContent = resultTime.hours
             refs.days.textContent = resultTime.days
           
-           
+            
             if (closeInterval < 999){
               clearInterval(interval)
               setTimeout(()=>{alert('Время вышло')}, 100)

@@ -42,10 +42,12 @@ function onFormSubmit(event){
       Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
     });
 
-    delayForPromise += stepForPromise
+       delayForPromise += stepForPromise
     
   }
-      
+  delay.value = ''
+  step.value = ''
+  amount.value = ''
 }
 
 
