@@ -27,10 +27,10 @@ refs.form.addEventListener('submit', onFormSubmit);
 function onFormSubmit(event){
   event.preventDefault();
 
-  const { delay, step, amount } = event.target;
-  let delayForPromise = Number(delay.value);
-  const stepForPromise = Number(step.value);
-  const amountForPromise = Number(amount.value);
+  const form = event.currentTarget  
+  let delayForPromise = Number(form.delay.value);
+  const stepForPromise = Number(form.step.value);
+  const amountForPromise = Number(form.amount.value);
   
     for (let i = 1; i <= amountForPromise; i+=1){
     
@@ -40,14 +40,12 @@ function onFormSubmit(event){
     })
     .catch(({ position, delay }) => {
       Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
-    });
+    }).finally(()=>form.reset());
 
        delayForPromise += stepForPromise
     
   }
-  delay.value = ''
-  step.value = ''
-  amount.value = ''
+ 
 }
 
 
